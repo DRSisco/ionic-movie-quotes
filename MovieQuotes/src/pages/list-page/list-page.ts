@@ -2,7 +2,7 @@ import { MovieQuote } from './../../models/MovieQuote.model';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { MovieQuote } from "../../models/MovieQuote.model";
+
 
 /**
  * Generated class for the ListPage page.
