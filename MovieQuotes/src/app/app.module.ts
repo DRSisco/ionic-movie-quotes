@@ -5,8 +5,19 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { MyApp } from './app.component';
+
+// Must export the config
+export const firebaseConfig = {
+    apiKey: "AIzaSyDlez69LZlJVnYNRu2V_6m2vxvKpg1vcgc",
+    authDomain: "siscodr-movie-quotes.firebaseapp.com",
+    databaseURL: "https://siscodr-movie-quotes.firebaseio.com",
+    projectId: "siscodr-movie-quotes",
+    storageBucket: "siscodr-movie-quotes.appspot.com",
+    messagingSenderId: "875558260938"
+}
 
 @NgModule({
   declarations: [
@@ -16,7 +27,9 @@ import { MyApp } from './app.component';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     QuoteDetailPageModule,
-    ListPageModule
+    ListPageModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

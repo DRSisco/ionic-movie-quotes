@@ -14,5 +14,10 @@
 
 
 <ion-content padding>
-  This is the List Page.
+  <ion-list *ngFor="let movieQuote of movieQuotesStream | async">
+    <button ion-item>
+      <h2>{{movieQuote.quote}}</h2>
+      <p>{{movieQuote.movie}}</p>
+    </button>
+  </ion-list>
 </ion-content>
