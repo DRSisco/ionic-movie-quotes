@@ -1,3 +1,13 @@
 page-quote-detail-page {
-
+    #detail-view {
+        background-color: #eee;
+    }
+    #movie-title {
+        color: #888;
+        text-align: right;
+        margin-top: 8px;
+        &:before {
+            content: "-";
+        }
+    }
 }

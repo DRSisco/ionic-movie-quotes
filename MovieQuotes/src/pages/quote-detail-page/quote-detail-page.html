@@ -8,11 +8,21 @@
 
   <ion-navbar>
     <ion-title>Quote</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="editQuote()">
+        <ion-icon name="ios-create-outline"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  This is the quote detail page.
+<ion-content padding id="detail-view">
+  <ion-card>
+    <ion-card-content>
+      <h2>{{movieQuote?.quote}}</h2>
+      <p id="movie-title">{{movieQuote?.movie}}</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

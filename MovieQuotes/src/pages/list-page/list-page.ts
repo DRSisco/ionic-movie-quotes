@@ -1,4 +1,5 @@
-import { MovieQuote } from './../../models/MovieQuote.model';
+import { QuoteDetailPage } from './../quote-detail-page/quote-detail-page';
+import { MovieQuote } from '../../models/MovieQuote.model';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
@@ -26,6 +27,16 @@ export class ListPage {
     console.log('ionViewDidLoad ListPage');
   }
 
+  pushDetailView(quoteToPush: MovieQuote) {
+    this.navCtrl.push(QuoteDetailPage, {
+      key: quoteToPush.$key
+    })
+  }
+
+  removeQuote(quoteToRemove: MovieQuote): void {
+    this.movieQuotesStream.remove(quoteToRemove.$key)
+  }
+
   addQuote(): void {
     const prompt = this.alertCrlr.create({
       title: "Add Quote",
@@ -49,6 +60,12 @@ export class ListPage {
           text: "Add Quote",
           handler: (data: MovieQuote) => {
             console.log(data)
+            if (data.quote.length > 0 && data.movie.length > 0) {
+              this.movieQuotesStream.push(data)
+            } else {
+              console.log("Invalid movie quote"   )
+              return false;
+            }
           }
         }
       ]
